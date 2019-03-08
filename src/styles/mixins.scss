@@ -1,0 +1,40 @@
+@import "./colors";
+@import "./functions";
+
+
+@mixin rhombi($class-name: 'rhombi', $colors: (hotpink, #51d1ff, #ca6dff), $size: 1.5em, $pad: 0, $randomize: true) {
+
+  $space: $size + $pad;
+  $count: length($colors);
+  $med: ($count - 1) / 2;
+  $shadow-offset: $space;
+  $bbox-offset: $space;
+  $bbox-translation: $space * $med + $bbox-offset;
+
+  .#{$class-name} {
+    display: inline-block;
+    width: $size;
+    height: $size;
+
+    transform: rotateZ(45deg) translateX($bbox-translation * -1) translateY($bbox-translation);
+
+    $rhombus-definition-list: ();
+    @for $i from 0 through length($colors) - 1 {
+      $color: nth($colors, $i + 1);
+
+      $rhombus-offset-x: ($space * $i) + $shadow-offset;
+      $rhombus-offset-y: ($space * $i * -1) - $shadow-offset;
+      @if $randomize {
+        $rhombus-offset-x: $rhombus-offset-x - small-random();
+        $rhombus-offset-y: $rhombus-offset-y - small-random();
+      }
+
+      $rhombus-definition-list: append(
+                      $rhombus-definition-list,
+                      unquote('#{$rhombus-offset-x $rhombus-offset-y $color}'),
+                      'comma'
+      );
+    }
+    box-shadow: unquote('#{$rhombus-definition-list}');
+  }
+}

@@ -1,28 +1,40 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" @click="down">
+    <!--<HelloWorld msg="Rubbish Rubies"/>-->
+    <Logo/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+// import HelloWorld from './components/HelloWorld.vue';
+import Logo from './components/Logo.vue';
 
 export default {
   name: 'app',
+  data() {
+    return {
+    };
+  },
   components: {
-    HelloWorld,
+    // HelloWorld,
+    Logo,
+  },
+  methods: {
+    down() {
+      // todo
+    },
   },
 };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import "./styles/extensions";
+
+  #app {
+    @extend %flex-center;
+
+    height: 100%;
+    padding: 2em;
+    text-align: center;
+  }
 </style>

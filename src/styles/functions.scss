@@ -1,0 +1,3 @@
+@function small-random() {
+  @return random(100) * .052;
+}
