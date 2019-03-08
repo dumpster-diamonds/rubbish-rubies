@@ -1,18 +1,15 @@
 @import "./colors";
+@import "./functions";
 
-
-@function small-random() {
-  @return random(100) * .052;
-}
 
 @mixin rhombi($class-name: 'rhombi', $colors: (hotpink, #51d1ff, #ca6dff), $size: 1.5em, $pad: 0, $randomize: true) {
 
   $space: $size + $pad;
   $count: length($colors);
-  $count-median: ($count - 1) / 2;
+  $med: ($count - 1) / 2;
   $shadow-offset: $space;
   $bbox-offset: $space;
-  $bbox-translation: $space * $count-median + $bbox-offset;
+  $bbox-translation: $space * $med + $bbox-offset;
 
   .#{$class-name} {
     display: inline-block;
