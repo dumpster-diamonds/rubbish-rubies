@@ -1,8 +1,8 @@
 @import "./colors";
 
 
-@function small-random() {                    
-  @return random(100) * .0520000;
+@function small-random() {
+  @return random(100) * .052;
 }
 
 @mixin rhombi($class-name: 'rhombi', $colors: (hotpink, #51d1ff, #ca6dff), $size: 1.5em, $pad: 0, $randomize: true) {
@@ -24,7 +24,7 @@
     $rhombus-definition-list: ();
     @for $i from 0 through length($colors) - 1 {
       $color: nth($colors, $i + 1);
-      
+
       $rhombus-offset-x: ($space * $i) + $shadow-offset;
       $rhombus-offset-y: ($space * $i * -1) - $shadow-offset;
       @if $randomize {
