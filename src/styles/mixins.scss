@@ -20,7 +20,7 @@ $middot: '\b7';
   }
 }
 
-@mixin rhombi($colors: (hotpink, #51d1ff, #ca6dff), $size: 1.5em, $pad: 0, $randomize: true) {
+@mixin rhombi($colors: $color-scheme, $size: 1.5em, $pad: 0, $randomize: true) {
 
   $space: $size + $pad;
   $count: length($colors);
@@ -48,6 +48,7 @@ $middot: '\b7';
   }
 
   display: inline-block;
+  border: 0 none;
   width: $size;
   height: $size;
   transform: rotateZ(45deg) translateX($bbox-translation * -1) translateY($bbox-translation);
