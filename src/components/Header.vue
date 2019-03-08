@@ -3,7 +3,7 @@
     <span class="title">{{ title }}</span>
     <nav>
       <ul>
-        <li v-for="item of menuItems" :class="item.class" v-html="item.content"></li>
+        <li v-for="item of menuItems" :class="item.class" v-html="item.content" @click="item.click"></li>
       </ul>
     </nav>
   </header>
@@ -25,9 +25,15 @@ export default {
         {
           content: '&quest;',
           class: 'icon',
+          click: this.help,
         },
       ],
     };
+  },
+  methods: {
+    help() {
+      window.location.href = '/';
+    },
   },
 };
 </script>
@@ -38,11 +44,10 @@ export default {
 
   header {
     text-align: left;
-    font-weight: 500;
-    text-shadow: 1px 1px 0 #fff;
+    font-weight: 700;
+    text-shadow: 1px 1px 0 #8f8f8f;
     color: $color-bg;
-    background-color: $color-fg-text;
-    opacity: .333;
+    background-color: darken($color-fg-text, 42);
 
     > * {
       display: inline-block;
@@ -87,7 +92,7 @@ export default {
             }
 
             &:hover {
-              color: lighten($color-bg, 100);
+              color: $color-fg-main;
             }
           }
         }
