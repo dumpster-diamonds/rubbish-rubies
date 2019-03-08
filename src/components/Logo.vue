@@ -20,7 +20,7 @@ export default {
     $color-fg-main,
     $color-fg-complement-2,
   );
-  $ruby-size: .777em;
+  $ruby-size: .666em;
   $ruby-pad: 1.333em;
 
   .logo {
@@ -29,11 +29,11 @@ export default {
     @include rhombi('rubies', $ruby-colors, $ruby-size, $ruby-pad);
 
     img {
-      width: 33vw;
-      height: 33vw;
+      width: 44vw;
+      height: 44vh;
       margin-left: -4vw; /* offset to keep the trash-bin centered */
-      margin-top: -12vh; /* give room for the rubies */
-      margin-bottom: -12vh; /* give room for the rubies */
+      margin-top: -18vh; /* give room for the rubies */
+      margin-bottom: -12vh;
     }
   }
 </style>
