@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" @click="down">
     <!--<HelloWorld msg="Rubbish Rubies"/>-->
     <Logo/>
   </div>
@@ -11,9 +11,18 @@ import Logo from './components/Logo.vue';
 
 export default {
   name: 'app',
+  data() {
+    return {
+    };
+  },
   components: {
     // HelloWorld,
     Logo,
+  },
+  methods: {
+    down() {
+      // todo
+    },
   },
 };
 </script>
