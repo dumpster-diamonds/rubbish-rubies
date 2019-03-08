@@ -1,7 +1,17 @@
 
-%flex-center {
+%flex-vbox {
   display: flex;
   flex-direction: column;
+}
+
+%flex-center {
+  @extend %flex-vbox;
   align-items: center;
   justify-content: center;
+}
+
+%flex-stretch {
+  @extend %flex-vbox;
+  align-items: stretch;
+  justify-content: stretch;
 }
