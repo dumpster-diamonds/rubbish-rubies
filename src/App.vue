@@ -43,7 +43,6 @@ export default {
   #app {
     @extend %flex-stretch;
     height: 100vh;
-    text-align: center;
 
     header,
     footer {
@@ -59,7 +58,7 @@ export default {
     .section {
       @extend %flex-center;
       flex-grow: 1;
-      padding: $pad;
+      padding: $pad $pad 0;
     }
   }
 </style>
