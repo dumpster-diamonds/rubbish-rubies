@@ -3,12 +3,12 @@
 html,
 body {
   height: 100vh;
+  font-size: 30px;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-size: 4.444vh;
   color: $color-fg-text;
   background-color: $color-bg;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -17,8 +17,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-div {
+div,
+input {
   box-sizing: border-box;
+}
+
+input {
+  border: 0 none;
+  color: $color-bg;
+  background-color: $color-fg-text;
 }
 
 a {

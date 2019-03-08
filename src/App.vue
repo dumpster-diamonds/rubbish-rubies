@@ -1,27 +1,35 @@
 <template>
-  <div id="app" @click="down">
-    <!--<HelloWorld msg="Rubbish Rubies"/>-->
-    <Logo/>
+  <div id="app" @click="popSplash">
+    <Header/>
+    <transition appear name="fade" mode="out-in">
+      <section class="section" :is="section" v-if="section"></section>
+    </transition>
+    <Footer/>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue';
-import Logo from './components/Logo.vue';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Splash from './components/Splash';
+import Map from './components/Map';
 
 export default {
   name: 'app',
   data() {
     return {
+      section: 'Splash',
     };
   },
   components: {
-    // HelloWorld,
-    Logo,
+    Header,
+    Footer,
+    Splash,
+    Map,
   },
   methods: {
-    down() {
-      // todo
+    popSplash() {
+      this.section = 'Map';
     },
   },
 };
@@ -30,11 +38,28 @@ export default {
 <style lang="scss">
   @import "./styles/extensions";
 
-  #app {
-    @extend %flex-center;
+  $pad: 1.666rem;
 
-    height: 100%;
-    padding: 2em;
+  #app {
+    @extend %flex-stretch;
+    height: 100vh;
     text-align: center;
+
+    header,
+    footer {
+      flex-shrink: 0;
+      height: $pad;
+      min-height: $pad;
+      line-height: $pad;
+      margin: 0;
+      padding: 0 $pad;
+      font-size: $pad / 3;
+    }
+
+    .section {
+      @extend %flex-center;
+      flex-grow: 1;
+      padding: $pad;
+    }
   }
 </style>
