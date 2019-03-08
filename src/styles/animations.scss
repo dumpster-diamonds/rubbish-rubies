@@ -1,0 +1,17 @@
+
+.fade-enter-active {
+  animation: fade-in 333ms;
+}
+
+.fade-leave-active {
+  animation: fade-in 333ms reverse;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
