@@ -1,7 +1,10 @@
 <template>
   <footer>
     <ul>
-      <li v-for="item of menuItems">{{ item.title }}</li>
+      <li v-for="item of menuItems" :class="item.class">
+        {{ item.text }}
+        <a v-if="item.link" v-bind="item.link">{{ item.link.text }}</a>
+      </li>
     </ul>
   </footer>
 </template>
@@ -13,13 +16,18 @@ export default {
     return {
       menuItems: [
         {
-          title: 'wat'
+          text: 'powered by ',
+          link: {
+            href: 'https://github.com/dumpster-diamonds/trash-treasures',
+            text: 'trash treasures',
+          },
         },
         {
-          title: 'foo'
-        },
-        {
-          title: 'bar'
+          class: 'diamonds',
+          link: {
+            href: 'https://github.com/dumpster-diamonds',
+            title: 'dumpster diamonds',
+          },
         },
       ],
     };
@@ -33,10 +41,22 @@ export default {
   footer {
     text-align: right;
     font-size: 1rem;
-    opacity: .555;
+    color: darken($color-fg-text, 30);
 
     ul {
       @include h-list;
+
+      .diamonds {
+        a {
+          display: inline-block;
+          @include rhombi($color-scheme, .5rem, 0, false);
+          /* rhombi offset fix */
+          margin: 0 0 -.2rem;
+          padding: .1rem .8rem;
+          /* reset default link border */
+          border: 0 none;
+        }
+      }
     }
   }
 </style>
