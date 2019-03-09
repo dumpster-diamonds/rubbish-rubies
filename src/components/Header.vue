@@ -3,7 +3,7 @@
     <span class="title">{{ title }}</span>
     <nav>
       <ul>
-        <li v-for="item of menuItems" :class="item.class" v-html="item.content" @click="item.click"></li>
+        <li v-for="item of menuItems" :class="item.class" v-html="item.content" @click="item.click || null"></li>
       </ul>
     </nav>
   </header>
@@ -56,6 +56,7 @@ export default {
 
     .title {
       font-size: 1.5em;
+      color: $color-fg-main;
     }
 
     nav {
@@ -67,8 +68,9 @@ export default {
         li {
           cursor: pointer;
 
-          &:hover {
-            color: darken($color-bg, 100);
+          &:hover,
+          &.icon:hover {
+            color: $color-fg-complement-1;
           }
 
           &.icon {
@@ -88,10 +90,6 @@ export default {
 
             &:first-child {
               margin-left: 0;
-            }
-
-            &:hover {
-              color: $color-fg-main;
             }
           }
         }
