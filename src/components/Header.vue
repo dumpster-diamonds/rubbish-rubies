@@ -42,10 +42,11 @@ export default {
   @import "../styles/colors";
   @import "../styles/mixins";
 
+  $icon-size: 1.5em;
+
   header {
     text-align: left;
     font-weight: 700;
-    text-shadow: 1px 1px 0 #8f8f8f;
     color: $color-bg;
     background-color: darken($color-fg-text, 42);
 
@@ -71,13 +72,12 @@ export default {
           }
 
           &.icon {
-            width: 1.5em;
-            height: 1.5em;
-            line-height: 1.5em;
+            width: $icon-size;
+            height: $icon-size;
+            line-height: calc(#{$icon-size} + 2px);
             margin: 0 .5em;
             padding: 0;
             text-align: center;
-            text-shadow: 0 0 0 #000;
             border-radius: 50%;
             color: $color-fg-text;
             background-color: $color-bg;
