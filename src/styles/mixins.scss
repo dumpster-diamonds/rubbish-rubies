@@ -9,12 +9,18 @@ $middot: '\b7';
   list-style-type: none;
 
   li {
+    position: relative;
     display: inline-block;
+    margin: 0;
+    padding: 0 .5em;
 
     @if $separator != false {
       &:not(:first-child):before {
         content: '#{$separator}';
-        margin: 0 .5em;
+        position: absolute;
+        left: -.5em;
+        width: 1em;
+        text-align: center;
       }
     }
   }
