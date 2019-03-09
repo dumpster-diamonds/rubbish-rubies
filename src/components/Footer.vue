@@ -16,13 +16,6 @@ export default {
     return {
       menuItems: [
         {
-          text: 'powered by ',
-          link: {
-            href: 'https://github.com/dumpster-diamonds/trash-treasures',
-            text: 'trash treasures',
-          },
-        },
-        {
           class: 'diamonds',
           link: {
             href: 'https://github.com/dumpster-diamonds',
