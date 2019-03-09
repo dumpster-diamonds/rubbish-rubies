@@ -1,3 +1,4 @@
+import 'mapbox-gl/dist/mapbox-gl.css';
 import './styles/main.scss';
 import Vue from 'vue';
 import App from './App.vue';
