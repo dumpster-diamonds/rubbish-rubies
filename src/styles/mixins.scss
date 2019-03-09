@@ -14,6 +14,14 @@ $middot: '\b7';
     margin: 0;
     padding: 0 .5em;
 
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+
     @if $separator != false {
       &:not(:first-child):before {
         content: '#{$separator}';
