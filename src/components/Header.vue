@@ -64,7 +64,6 @@ export default {
         @include h-list(false);
 
         li {
-          padding: 0 .5em;
           cursor: pointer;
 
           &:hover {
