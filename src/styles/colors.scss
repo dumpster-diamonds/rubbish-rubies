@@ -2,12 +2,12 @@ $color-fg-text: #cfcfcf;
 $color-fg-main: #ff68d7;
 $color-fg-complement-1: #68b4ff;
 $color-fg-complement-2: #c868ff;
-$color-bg: #3f3f3f;
+$color-bg-1: rgba(33, 33, 33, 1);
+$color-bg-2: rgba(119, 119, 119, 1);
+$color-bg: $color-bg-1;
 
 $color-scheme: (
         $color-fg-complement-1,
         $color-fg-main,
         $color-fg-complement-2,
-  //#faffbb,
-  //#8cde66,
 );
