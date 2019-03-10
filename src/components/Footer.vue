@@ -42,10 +42,10 @@ export default {
       .diamonds {
         a {
           display: inline-block;
-          @include rhombi($color-scheme, .5rem, 0, false);
+          @include rhombi($color-scheme, .333rem, 0, false);
           /* rhombi offset fix */
           margin: 0 0 -.2rem;
-          padding: .1rem .8rem;
+          padding: .1rem .533rem;
           /* reset default link border */
           border: 0 none;
         }
