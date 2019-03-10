@@ -1,13 +1,29 @@
 <template>
-  <div class="splash">
-    <div class="rubies"></div>
-    <img alt="dumpster diver" src="../assets/dumpster-diver.svg">
-  </div>
+  <transition appear name="fade" mode="out-in">
+    <div v-if="popped" key="content">
+      <slot/>
+    </div>
+    <div v-else class="splash" @click="popSplash" key="splash">
+      <div class="rubies"></div>
+      <img :alt.once="imgTitle" src="../assets/dumpster-diver.svg">
+    </div>
+  </transition>
 </template>
 
 <script>
 export default {
   name: 'Splash',
+  data() {
+    return {
+      imgTitle: 'dumpster diver',
+      popped: false,
+    };
+  },
+  methods: {
+    popSplash() {
+      this.popped = true;
+    },
+  },
 };
 </script>
 
@@ -25,7 +41,9 @@ export default {
   $ruby-size: 2.8vw;
   $ruby-pad: 2.2vw;
 
-  .splash {
+  div.splash {
+    @extend %flex-center;
+    @extend %cover-viewport;
     cursor: pointer;
 
     .rubies {
