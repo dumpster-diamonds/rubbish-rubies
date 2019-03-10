@@ -3,24 +3,38 @@
 
 $middot: '\b7';
 
-@mixin h-list($separator: $middot) {
+@mixin h-list($separator: $middot, $pad: .5rem) {
   margin: 0;
   padding: 0;
   list-style-type: none;
 
   li {
+    position: relative;
     display: inline-block;
+    margin: 0;
+    padding: 0 $pad;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
 
     @if $separator != false {
       &:not(:first-child):before {
         content: '#{$separator}';
-        margin: 0 .5em;
+        position: absolute;
+        left: -$pad;
+        width: $pad * 2;
+        text-align: center;
       }
     }
   }
 }
 
-@mixin rhombi($colors: (hotpink, #51d1ff, #ca6dff), $size: 1.5em, $pad: 0, $randomize: true) {
+@mixin rhombi($colors: $color-scheme, $size: 1.5em, $pad: 0, $randomize: true) {
 
   $space: $size + $pad;
   $count: length($colors);
@@ -47,9 +61,13 @@ $middot: '\b7';
     );
   }
 
-  display: inline-block;
-  width: $size;
-  height: $size;
-  transform: rotateZ(45deg) translateX($bbox-translation * -1) translateY($bbox-translation);
-  box-shadow: unquote('#{$rhombus-definition-list}');
+  &:after {
+    content: '';
+    display: block;
+    width: $size;
+    height: $size;
+    transform: rotateZ(45deg) translateX($bbox-translation * -1) translateY($bbox-translation);
+    box-shadow: unquote('#{$rhombus-definition-list}');
+    pointer-events: none;
+  }
 }

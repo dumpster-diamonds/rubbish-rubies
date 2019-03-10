@@ -1,8 +1,8 @@
 <template>
   <div id="app" class="app" is="splash">
-    <Header/>
+    <Header class="header"/>
     <Map class="main"/>
-    <Footer/>
+    <Footer class="footer"/>
   </div>
 </template>
 
@@ -31,10 +31,9 @@ export default {
   .app {
     @extend %flex-stretch;
     @extend %cover-viewport;
-    text-align: center;
 
-    header,
-    footer {
+    .header,
+    .footer {
       flex-shrink: 0;
       height: $pad;
       min-height: $pad;
@@ -47,7 +46,7 @@ export default {
     .main {
       @extend %flex-center;
       flex-grow: 1;
-      padding: $pad;
+      padding: 0 $pad;
     }
   }
 </style>

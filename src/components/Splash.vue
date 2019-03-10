@@ -28,16 +28,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import "../styles/extensions";
+  @import "../styles/colors";
   @import "../styles/mixins";
+  @import "../styles/extensions";
 
-  $ruby-colors: (
-    $color-fg-complement-1,
-    $color-fg-main,
-    /*#faffbb,*/
-    $color-fg-complement-2,
-    /*#8cde66,*/
-  );
   $ruby-size: 2.8vw;
   $ruby-pad: 2.2vw;
 
@@ -47,8 +41,7 @@ export default {
     cursor: pointer;
 
     .rubies {
-      @include rhombi($ruby-colors, $ruby-size, $ruby-pad);
-      margin-top: 2.2vw;
+      @include rhombi($color-scheme, $ruby-size, $ruby-pad);
     }
 
     img {
@@ -56,8 +49,8 @@ export default {
       /* keep the dustbin centered */
       margin-left: -44px;
       /* crop to get closer the rubies */
-      margin-top: -44px;
-      margin-bottom: -44px;
+      margin-top: -22px;
+      margin-bottom: -22px;
     }
   }
 </style>

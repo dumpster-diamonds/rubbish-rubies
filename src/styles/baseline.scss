@@ -12,10 +12,15 @@ body {
   padding: 0;
   color: $color-fg-text;
   background-color: $color-bg;
+  background-image: linear-gradient(30deg, #{$color-bg-1} 0%, #{$color-bg-2} 100%);
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  text-transform: lowercase;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+input {
+  text-transform: lowercase;
 }
 
 div,
