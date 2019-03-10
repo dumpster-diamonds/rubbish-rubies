@@ -48,14 +48,13 @@ export default {
     text-align: left;
     font-weight: 700;
     color: $color-bg;
-    background-color: darken($color-fg-text, 42);
 
     > * {
       display: inline-block;
     }
 
     .title {
-      font-size: 1.5em;
+      font-size: 1.25em;
       color: $color-fg-main;
     }
 
