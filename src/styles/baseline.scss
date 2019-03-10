@@ -1,8 +1,9 @@
 @import "./colors";
+@import "./extensions";
 
 html,
 body {
-  height: 100vh;
+  @extend %cover-viewport;
   font-size: 30px;
 }
 
