@@ -1,48 +1,36 @@
 <template>
-  <div id="app" @click="popSplash">
+  <div id="app" class="app" is="splash">
     <Header/>
-    <transition appear name="fade" mode="out-in">
-      <section class="section" :is="section" v-if="section"></section>
-    </transition>
+    <Map class="main"/>
     <Footer/>
   </div>
 </template>
 
 <script>
-import Header from './components/Header';
-import Footer from './components/Footer';
 import Splash from './components/Splash';
+import Header from './components/Header';
 import Map from './components/Map';
+import Footer from './components/Footer';
 
 export default {
   name: 'app',
-  data() {
-    return {
-      section: 'Splash',
-    };
-  },
   components: {
-    Header,
-    Footer,
     Splash,
+    Header,
     Map,
-  },
-  methods: {
-    popSplash() {
-      this.section = 'Map';
-    },
+    Footer,
   },
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   @import "./styles/extensions";
 
   $pad: 1.666rem;
 
-  #app {
+  .app {
     @extend %flex-stretch;
-    height: 100vh;
+    @extend %cover-viewport;
 
     header,
     footer {
@@ -55,7 +43,7 @@ export default {
       font-size: $pad / 3;
     }
 
-    .section {
+    .main {
       @extend %flex-center;
       flex-grow: 1;
       padding: $pad $pad 0;
