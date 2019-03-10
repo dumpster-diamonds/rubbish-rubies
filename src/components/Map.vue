@@ -1,33 +1,75 @@
 <template>
   <div class="map">
-    <places
-      v-model="form.country.label"
-      placeholder="where are we going?"
-      @change="val => { form.country.data = val }"
-      :options="{ countries: ['US'] }">
+    <places class="search"
+            v-model="search.label"
+            :placeholder="search.placeholder"
+            :options="search.options"
+            :appId="search.appId"
+            :apiKey="search.apiKey"
+            @change="val => { search.data = val }">
     </places>
     <div class="paper">
+      <MglMap v-bind="map"
+              :center.sync="center">
+        <MglMarker :coordinates.sync="markerCoordinates"
+                   :color="marker.color"/>
+      </MglMap>
     </div>
   </div>
 </template>
 
 <script>
   import Places from 'vue-places';
+  import { MglGeojsonLayer, MglMap, MglMarker } from 'vue-mapbox';
 
   export default {
     name: 'Map',
     components: {
       Places,
+      MglMap,
+      MglMarker,
+      MglGeojsonLayer
     },
     data() {
       return {
-        form: {
-          country: {
-            label: null,
-            data: {},
+        search: {
+          label: null,
+          data: {},
+          placeholder: 'where should we look?',
+          options: {
+            countries: ['IL'],
           },
+          appId: process.env.VUE_APP_ALGOLIA_APPLICATION_ID,
+          apiKey: process.env.VUE_APP_ALGOLIA_SEARCH_ONLY_API_KEY,
+        },
+        map: {
+          accessToken: process.env.VUE_APP_MAPBOX_ACCESS_TOKEN,
+          mapStyle: process.env.VUE_APP_MAPBOX_MAP_STYLE_MINIMO,
+          zoom: 14,
+        },
+        marker: {
+          color: '#ff68d7',
+          // color: '#c868ff',
         },
       };
+    },
+    computed: {
+      center: {
+        get() {
+          const { data: { latlng = {} } = {} } = this.search;
+          return Object.keys(latlng).length ? latlng : {
+            lat: 32.0864,
+            lng: 34.7795,
+          };
+        },
+        set(val) {
+
+        },
+      },
+      markerCoordinates() {
+        const { lat, lng } = this.center;
+        return [lng, lat];
+      },
     },
   };
 </script>
@@ -38,7 +80,7 @@
   .map {
     @extend %flex-stretch;
 
-    input {
+    .search {
       width: 100%;
       height: 1.666rem;
       line-height: 1.666rem;
@@ -48,9 +90,9 @@
     .paper {
       flex-grow: 1;
       width: 100%;
-      height: 80%;
       margin: 1rem 0 0;
-      border: 1px dashed #aaa;
+      box-shadow: 2px 2px 22px #0a0a0a;
+      background-color: #1b1b1b;
     }
 
     .algolia-places {
@@ -63,10 +105,13 @@
       .ap-footer {
         display: none;
       }
-
-      .ap-input {
-      }
     }
 
+    .mgl-map-wrapper {
+      .mapboxgl-ctrl-logo,
+      .mapboxgl-ctrl-attrib {
+        display: none;
+      }
+    }
   }
 </style>
