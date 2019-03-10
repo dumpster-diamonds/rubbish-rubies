@@ -46,7 +46,7 @@ export default {
     .main {
       @extend %flex-center;
       flex-grow: 1;
-      padding: $pad $pad 0;
+      padding: 0 $pad;
     }
   }
 </style>
