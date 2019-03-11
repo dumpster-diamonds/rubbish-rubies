@@ -2,17 +2,14 @@
   <div class="map">
     <places class="search"
             v-model="search.label"
-            :placeholder="search.placeholder"
-            :options="search.options"
-            :appId="search.appId"
-            :apiKey="search.apiKey"
+            v-bind="search.bindings"
             @change="val => { search.data = val }">
     </places>
     <div class="paper">
       <MglMap v-bind="map"
               :center.sync="center">
-        <MglMarker :coordinates.sync="markerCoordinates"
-                   :color="marker.color"/>
+        <MglMarker v-bind="marker"
+                   :coordinates.sync="markerCoordinates"/>
       </MglMap>
     </div>
   </div>
@@ -35,16 +32,19 @@
         search: {
           label: null,
           data: {},
-          placeholder: 'where should we look?',
-          options: {
-            countries: ['IL'],
+          bindings: {
+            placeholder: 'where should we look?',
+            appId: process.env.VUE_APP_ALGOLIA_APPLICATION_ID,
+            apiKey: process.env.VUE_APP_ALGOLIA_API_KEY,
+            options: {
+              countries: ['IL'],
+            },
           },
-          appId: process.env.VUE_APP_ALGOLIA_APPLICATION_ID,
-          apiKey: process.env.VUE_APP_ALGOLIA_API_KEY,
         },
         map: {
           accessToken: process.env.VUE_APP_MAPBOX_ACCESS_TOKEN,
           mapStyle: process.env.VUE_APP_MAPBOX_MAP_STYLE_MINIMO,
+          interactive: false,
           zoom: 14,
         },
         marker: {
