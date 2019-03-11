@@ -40,7 +40,7 @@
             countries: ['IL'],
           },
           appId: process.env.VUE_APP_ALGOLIA_APPLICATION_ID,
-          apiKey: process.env.VUE_APP_ALGOLIA_SEARCH_ONLY_API_KEY,
+          apiKey: process.env.VUE_APP_ALGOLIA_API_KEY,
         },
         map: {
           accessToken: process.env.VUE_APP_MAPBOX_ACCESS_TOKEN,
