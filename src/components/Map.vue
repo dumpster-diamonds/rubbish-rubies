@@ -48,8 +48,9 @@
           zoom: 14,
         },
         marker: {
-          color: '#ff68d7',
+          // color: '#ff68d7',
           // color: '#c868ff',
+          color: '#68b4ff',
         },
       };
     },
@@ -75,13 +76,19 @@
 </script>
 
 <style lang="scss">
+  @import "../styles/colors";
   @import "../styles/extensions";
 
   .map {
     @extend %flex-stretch;
 
+    .search,
+    .paper {
+      background-color: $color-fg-text;
+      box-shadow: 2px 2px 24px #0a0a0a;
+    }
+
     .search {
-      width: 100%;
       height: 1.666rem;
       line-height: 1.666rem;
       padding: 0 1em;
@@ -89,10 +96,7 @@
 
     .paper {
       flex-grow: 1;
-      width: 100%;
-      margin: 1rem 0 0;
-      box-shadow: 2px 2px 22px #0a0a0a;
-      background-color: #1b1b1b;
+      margin: .666rem 0 0;
     }
 
     .algolia-places {
@@ -100,6 +104,14 @@
       .ap-dropdown-menu {
         font-size: .666rem;
         border-radius: 0;
+      }
+
+      .ap-input {
+        color: $color-bg-1;
+      }
+
+      .ap-dropdown-menu {
+        color: $color-fg-complement-2;
       }
 
       .ap-footer {
