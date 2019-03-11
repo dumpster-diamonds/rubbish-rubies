@@ -38,7 +38,7 @@
             appId: process.env.VUE_APP_ALGOLIA_APPLICATION_ID,
             apiKey: process.env.VUE_APP_ALGOLIA_API_KEY,
             options: {
-              countries: ['IL'], // todo - extract countries from env var?
+              countries: ['IL'],
             },
           },
         },
@@ -46,7 +46,7 @@
           accessToken: process.env.VUE_APP_MAPBOX_ACCESS_TOKEN,
           mapStyle: process.env.VUE_APP_MAPBOX_MAP_STYLE_MINIMO,
           interactive: false,
-          zoom: 13.5, // todo - extract countries from env var?
+          zoom: 13.5,
         },
         marker: {
           // color: '#ff68d7',
