@@ -6,6 +6,10 @@
             @change="val => { search.data = val }">
     </places>
     <div class="paper">
+      <div class="controls">
+        <button class="icon" @click="zoomOut">&minus;</button>
+        <button class="icon" @click="zoomIn">&plus;</button>
+      </div>
       <MglMap v-bind="map"
               :center.once="initialLatLng"
               @load="onMapLoad">
@@ -62,7 +66,13 @@
     methods: {
       async onMapLoad({ map, component }) {
         this.mapboxMap = map;
-        this.mapboxAsyncActions = component.actions;
+        this.mapboxActions = component.actions;
+      },
+      async zoomIn() {
+        await this.mapboxActions.zoomIn();
+      },
+      async zoomOut() {
+        await this.mapboxActions.zoomOut();
       },
     },
     computed: {
@@ -79,7 +89,7 @@
     },
     watch: {
       async center(newVal, oldVal) {
-        await this.mapboxAsyncActions.flyTo({
+        await this.mapboxActions.flyTo({
           center: newVal,
           speed: 1
         });
@@ -90,7 +100,10 @@
 
 <style lang="scss">
   @import "../styles/colors";
+  @import "../styles/mixins";
   @import "../styles/extensions";
+
+  $icon-size: .8rem;
 
   .map {
     @extend %flex-stretch;
@@ -108,8 +121,25 @@
     }
 
     .paper {
+      position: relative;
       flex-grow: 1;
       margin: .666rem 0 0;
+
+      .controls {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        display: flex;
+        margin: .5rem;
+
+        .icon {
+          @include icon($icon-size);
+
+          font-size: $icon-size * .5;
+          line-height: 0;
+        }
+      }
     }
 
     .algolia-places {

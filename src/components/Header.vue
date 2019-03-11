@@ -42,8 +42,6 @@ export default {
   @import "../styles/colors";
   @import "../styles/mixins";
 
-  $icon-size: 1.5em;
-
   header {
     text-align: left;
     font-weight: 700;
@@ -67,29 +65,12 @@ export default {
         li {
           cursor: pointer;
 
-          &:hover,
-          &.icon:hover {
+          &:hover {
             color: $color-fg-complement-1;
           }
 
           &.icon {
-            width: $icon-size;
-            height: $icon-size;
-            line-height: calc(#{$icon-size} + 2px);
-            margin: 0 .5em;
-            padding: 0;
-            text-align: center;
-            border-radius: 50%;
-            color: $color-fg-text;
-            background-color: $color-bg;
-
-            &:last-child {
-              margin-right: 0;
-            }
-
-            &:first-child {
-              margin-left: 0;
-            }
+            @include icon(1.5em);
           }
         }
       }
