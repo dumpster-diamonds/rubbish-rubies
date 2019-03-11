@@ -3,7 +3,7 @@
     <ul>
       <li v-for="item of menuItems" :class="item.class">
         {{ item.text }}
-        <a v-if="item.link" v-bind="item.link">{{ item.link.text }}</a>
+        <a v-if="item.link" v-bind="item.link" target="_blank">{{ item.link.text }}</a>
       </li>
     </ul>
   </footer>
@@ -44,7 +44,7 @@ export default {
           display: inline-block;
           @include rhombi($color-scheme, .333rem, 0, false);
           /* rhombi offset fix */
-          margin: 0 0 -.2rem;
+          margin: 0 0 -0.1rem;
           padding: .1rem .533rem;
           /* reset default link border */
           border: 0 none;
