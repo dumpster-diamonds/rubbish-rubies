@@ -1,6 +1,17 @@
 {
   "version": 2,
   "name": "rubbish-rubies",
+  "build": {
+    "env": {
+      "VUE_APP_ALGOLIA_APPLICATION_ID": "@vue-app-algolia-application-id",
+      "VUE_APP_ALGOLIA_API_KEY": "@vue-app-algolia-api-key",
+      "VUE_APP_MAPBOX_ACCESS_TOKEN": "@vue-app-mapbox-access-token",
+      "VUE_APP_MAPBOX_MAP_STYLE_DARK": "@vue-app-mapbox-map-style-dark",
+      "VUE_APP_MAPBOX_MAP_STYLE_MOONLIGHT": "@vue-app-mapbox-map-style-moonlight",
+      "VUE_APP_MAPBOX_MAP_STYLE_ICE_CREAM": "@vue-app-mapbox-map-style-ice-cream",
+      "VUE_APP_MAPBOX_MAP_STYLE_MINIMO": "@vue-app-mapbox-map-style-minimo"
+    }
+  },
   "builds": [
     {
       "src": "package.json",

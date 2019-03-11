@@ -26,11 +26,17 @@ export default {
 <style scoped lang="scss">
   @import "./styles/extensions";
 
-  $pad: 1.666rem;
+  $pad: 2rem;
 
   .app {
     @extend %flex-stretch;
     @extend %cover-viewport;
+
+    .header,
+    .footer,
+    .main {
+      padding: 0 $pad;
+    }
 
     .header,
     .footer {
@@ -39,14 +45,11 @@ export default {
       min-height: $pad;
       line-height: $pad;
       margin: 0;
-      padding: 0 $pad;
       font-size: $pad / 3;
     }
 
     .main {
-      @extend %flex-center;
       flex-grow: 1;
-      padding: 0 $pad;
     }
   }
 </style>

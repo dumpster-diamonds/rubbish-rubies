@@ -2,17 +2,14 @@
   <div class="map">
     <places class="search"
             v-model="search.label"
-            :placeholder="search.placeholder"
-            :options="search.options"
-            :appId="search.appId"
-            :apiKey="search.apiKey"
+            v-bind="search.bindings"
             @change="val => { search.data = val }">
     </places>
     <div class="paper">
       <MglMap v-bind="map"
               :center.sync="center">
-        <MglMarker :coordinates.sync="markerCoordinates"
-                   :color="marker.color"/>
+        <MglMarker v-bind="marker"
+                   :coordinates.sync="markerCoordinates"/>
       </MglMap>
     </div>
   </div>
@@ -35,21 +32,25 @@
         search: {
           label: null,
           data: {},
-          placeholder: 'where should we look?',
-          options: {
-            countries: ['IL'],
+          bindings: {
+            placeholder: 'where should we look?',
+            appId: process.env.VUE_APP_ALGOLIA_APPLICATION_ID,
+            apiKey: process.env.VUE_APP_ALGOLIA_API_KEY,
+            options: {
+              countries: ['IL'],
+            },
           },
-          appId: process.env.VUE_APP_ALGOLIA_APPLICATION_ID,
-          apiKey: process.env.VUE_APP_ALGOLIA_SEARCH_ONLY_API_KEY,
         },
         map: {
           accessToken: process.env.VUE_APP_MAPBOX_ACCESS_TOKEN,
           mapStyle: process.env.VUE_APP_MAPBOX_MAP_STYLE_MINIMO,
+          interactive: false,
           zoom: 14,
         },
         marker: {
-          color: '#ff68d7',
+          // color: '#ff68d7',
           // color: '#c868ff',
+          color: '#68b4ff',
         },
       };
     },
@@ -75,13 +76,19 @@
 </script>
 
 <style lang="scss">
+  @import "../styles/colors";
   @import "../styles/extensions";
 
   .map {
     @extend %flex-stretch;
 
+    .search,
+    .paper {
+      background-color: $color-fg-text;
+      box-shadow: 2px 2px 24px #0a0a0a;
+    }
+
     .search {
-      width: 100%;
       height: 1.666rem;
       line-height: 1.666rem;
       padding: 0 1em;
@@ -89,10 +96,7 @@
 
     .paper {
       flex-grow: 1;
-      width: 100%;
-      margin: 1rem 0 0;
-      box-shadow: 2px 2px 22px #0a0a0a;
-      background-color: #1b1b1b;
+      margin: .666rem 0 0;
     }
 
     .algolia-places {
@@ -100,6 +104,22 @@
       .ap-dropdown-menu {
         font-size: .666rem;
         border-radius: 0;
+      }
+
+      .ap-input {
+        color: $color-bg-1;
+
+        &::-webkit-search-cancel-button {
+          -webkit-appearance: none;
+        }
+      }
+
+      .ap-input-icon.ap-icon-clear {
+        cursor: pointer;
+      }
+
+      .ap-dropdown-menu {
+        color: $color-fg-complement-2;
       }
 
       .ap-footer {
