@@ -108,6 +108,14 @@
 
       .ap-input {
         color: $color-bg-1;
+
+        &::-webkit-search-cancel-button {
+          -webkit-appearance: none;
+        }
+      }
+
+      .ap-input-icon.ap-icon-clear {
+        cursor: pointer;
       }
 
       .ap-dropdown-menu {
