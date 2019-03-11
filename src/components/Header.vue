@@ -3,7 +3,10 @@
     <span class="title">{{ title }}</span>
     <nav>
       <ul>
-        <li v-for="item of menuItems" :class="item.class" v-html="item.content" @click="item.click || null"></li>
+        <li v-for="item of menuItems"
+            :class="item.class"
+            v-html="item.content"
+            @click="item.click && item.click()"></li>
       </ul>
     </nav>
   </header>
