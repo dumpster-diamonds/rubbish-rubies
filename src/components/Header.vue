@@ -6,7 +6,7 @@
         <li v-for="item of menuItems"
             :class="item.class"
             v-html="item.content"
-            @click="item.click && item.click()"></li>
+            @click="menuItemClick(item)"></li>
       </ul>
     </nav>
   </header>
@@ -28,14 +28,13 @@ export default {
         {
           content: '&quest;',
           class: 'icon',
-          click: this.help,
         },
       ],
     };
   },
   methods: {
-    help() {
-      window.location.href = '/';
+    menuItemClick(event) {
+      console.log('menu item clicked!', event);
     },
   },
 };
